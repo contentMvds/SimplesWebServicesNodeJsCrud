@@ -10,6 +10,9 @@ conexão com o banco de dados
 * password : Senha do banco de dados
 * database : nome da base
 	  
+### Comando para rodas no nodeJs
+* node index.js
+
 
 
  
