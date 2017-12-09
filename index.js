@@ -72,6 +72,27 @@ app.get('/agenda/', function (req,res) {
 	  	}
 	});
 });
+// Get information in agenda for user responsable
+app.get('/agenda/user/:id', function (req,res) {
+	var user = req.params.id;
+
+	connection.query('SELECT * from agenda where userResponsible = ?', [user], function(err, rows, fields) {
+  		if (!err){
+  			var response = [];
+
+			if (rows.length != 0) {
+				response.push({'result' : 'success', 'data' : rows});
+			} else {
+				response.push({'result' : 'error', 'msg' : 'No Results Found'});
+			}
+
+			res.setHeader('Content-Type', 'application/json');
+	    	res.status(200).send(JSON.stringify(response));
+  		} else {
+		    res.status(400).send(err);
+	  	}
+	});
+});
 // Add new information in table agenda
 app.post('/agenda/add', function (req,res) {
 	var response = [];
@@ -114,7 +135,7 @@ app.post('/agenda/add', function (req,res) {
 	}
 });
 // Edit info in table agenda
-app.post('/agenda/edit/:id', function (req,res) {
+app.put('/agenda/edit/:id', function (req,res) {
 	var id = req.params.id;
 	var response = [];
  
