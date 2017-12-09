@@ -13,6 +13,8 @@ conexão com o banco de dados
 ### Comando para rodas no nodeJs
 * node index.js
 
+### exemplo sql Anexado
+Foi anezxado um arquivo sql para testes
 
 
  
